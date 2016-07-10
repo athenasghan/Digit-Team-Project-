@@ -16,23 +16,23 @@ dataset = datasets.fetch_mldata("MNIST Original")
 features = np.array(dataset.data, 'int16')
 labels = np.array(dataset.target, 'int')
 
-#dict 형태의 데이터셋으로 변환 & 이미지 데이터는 바이너리 형태로 변환
+ #dict 형태의 데이터셋으로 변환 & 이미지 데이터는 바이너리 형태로 변환
 
 
-# # Extract the hog features
-# list_hog_fd = []
-# for feature in features:
-#     fd = hog(feature.reshape((28, 28)), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualise=False)
-#     list_hog_fd.append(fd)
-# hog_features = np.array(list_hog_fd, 'float64')
+# Extract the hog features
+ list_hog_fd = []
+ # for feature in features:
+     fd = hog(feature.reshape((28, 28)), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualise=False)
+     list_hog_fd.append(fd)
+ hog_features = np.array(list_hog_fd, 'float64')
 
-# print "Count of digits in dataset", Counter(labels)
+ print "Count of digits in dataset", Counter(labels)
 
-# # Create an linear SVM object
-# clf = LinearSVC()
+ # Create an linear SVM object
+ clf = LinearSVC()
 
-# # Perform the training
-# clf.fit(hog_features, labels)
+ # Perform the training
+  clf.fit(hog_features, labels)
 
-# # Save the classifier
-# joblib.dump(clf, "digits_cls.pkl", compress=3)
+# Save the classifier
+ joblib.dump(clf, "digits_cls.pkl", compress=3)
